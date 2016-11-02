@@ -62,5 +62,7 @@
     <None Include="InsertCustomer.sql" />
     <None Include="InsertProduct.sql" />
     <None Include="UpdateProductPrice.sql" />
+    <None Include="TriggerUpdateName.sql" />
+    <None Include="Drop-Create Trigger Table.sql" />
   </ItemGroup>
 </Project>
