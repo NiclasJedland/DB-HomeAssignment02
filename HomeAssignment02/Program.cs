@@ -16,7 +16,7 @@ namespace HomeAssignment02
 			while(true)
 			{
 				var inputList = new List<string>();
-				Console.WriteLine("Commands: 1. InsertCustomer, 2. InsertProduct, 3. UpdateProductPrice or Quit/Exit");
+				Console.WriteLine("Commands: 1. InsertCustomer, 2. InsertProduct, 3. UpdateProductPrice or Quit/Exit\n");
 				var input = Console.ReadLine().ToLower();
 
 				if(input == "quit" || input == "exit")
@@ -29,13 +29,13 @@ namespace HomeAssignment02
 						while(true)
 						{
 							//This should probably be something else than a console tbh...
-							Console.WriteLine("Write the ID (string 5 letters and cant be empty), Company Name (string cant be empty), Contact Name(string), Contact Title(string), Address(string), City(string), Region(string), Postal Code(string), Country(string), Phone Number(string), Fax(string)");
+							Console.WriteLine("Write:\nCustomerID(string, 5 letters and cant be empty)\nCompany Name(string, cant be empty)\nContact Name(string)\nContact Title(string)\nAddress(string)\nCity(string)\nRegion(string)\nPostal Code(string)\nCountry(string)\nPhone Number(string)\nFax(string)");
 							input = Console.ReadLine();
 							inputList = input.Split(new string[] { ", " }, StringSplitOptions.None).ToList();
 							if(inputList.Count() == 11 && inputList[0].Length == 5 && inputList[1].Length > 0)
 								break;
 
-							Console.WriteLine("All input required, and must be separated by ', '!\nFor example you can insert ABCDE, Nackademin, , , , Stockholm, , , ,08-1234567 , ");
+							Console.WriteLine("All input required, and must be separated by ', '!\nFor example you can insert ABCDE, Nackademin, , , , Stockholm, , , ,08-1234567 , \n");
 						}
 						
 						dbConnection.InsertCustomer(inputList[0], inputList[1], inputList[2], inputList[3], inputList[4], inputList[5], inputList[6], inputList[7], inputList[8], inputList[9], inputList[10]);
@@ -44,13 +44,14 @@ namespace HomeAssignment02
 					case "2":
 						while(true)
 						{
-							Console.WriteLine("Write Productname (string, cant be empty), SupplierID (int), CategoryID(int), QuantityPerUnit(string), UnitPrice(decimal), UnitsInStock(int), UnitsOnOrder(int), ReorderLevel(int), Discontinued (false/true - if empty = false)");
+							Console.WriteLine("Write:\nProductname(string, cant be empty)\nSupplierID (int)\nCategoryID(int)\nQuantityPerUnit(string)\nUnitPrice(decimal)\nUnitsInStock(int)\nUnitsOnOrder(int)\nReorderLevel(int)\nDiscontinued(false/true - if empty = false)");
 							input = Console.ReadLine();
 							inputList = input.Split(new string[] { ", " }, StringSplitOptions.None).ToList();
-							if(inputList.Count() == 9 && inputList[0].Length > 0)
+							if(inputList.Count() == 9 && inputList[0].Length > 0 && inputList[1].All(char.IsDigit) && inputList[2].All(char.IsDigit) && inputList[4].All(char.IsDigit) 
+																				&& inputList[5].All(char.IsDigit) && inputList[6].All(char.IsDigit) && inputList[7].All(char.IsDigit))
 								break;
 
-							Console.WriteLine("All input required, and must be separated by ', '!\nFor example you can insert Productname, 1, 12, 10 boxes x 20 bags, 12.50, 100, , , false");
+							Console.WriteLine("All input required, and must be separated by ', '!\nFor example you can insert Productname, 1, 12, 10 boxes x 20 bags, 12.50, 100, , , false\n");
 						}
 												
 						dbConnection.InsertProduct(inputList[0], int.Parse(inputList[1]), int.Parse(inputList[2]), inputList[3], decimal.Parse(inputList[4]), int.Parse(inputList[5]), int.Parse(inputList[6]), int.Parse(inputList[7]), inputList[8].Trim().ToLower() == "true" ? true : false);
@@ -59,7 +60,7 @@ namespace HomeAssignment02
 					case "3":
 						while(true)
 						{
-							Console.WriteLine("Write ProductID(int), UnitPrice(decimal)");
+							Console.WriteLine("Write:\nProductID(int)\nUnitPrice(decimal)");
 							input = Console.ReadLine();
 							inputList = input.Split(new string[] { ", " }, StringSplitOptions.None).ToList();
 							var test = inputList[0].All(char.IsDigit);
@@ -67,7 +68,7 @@ namespace HomeAssignment02
 							if(inputList.Count() == 2 && inputList[0].All(char.IsDigit) && inputList[1].All(char.IsDigit))
 								break;
 
-							Console.WriteLine("All input required, and must be separated by ', '!\nFor example you can insert 12, 99.90");
+							Console.WriteLine("All input required, and must be separated by ', '!\nFor example you can insert 12, 99.90\n");
 						}
 
 						dbConnection.UpdateProductPrice(int.Parse(inputList[0]), decimal.Parse(inputList[1]));
