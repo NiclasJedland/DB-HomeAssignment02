@@ -110,13 +110,16 @@
     <Build Include="dbo\Stored Procedures\InsertRegion.sql" />
     <Build Include="dbo\Stored Procedures\UpdateRegion.sql" />
     <Build Include="dbo\Stored Procedures\EmployeeTotalSales.sql" />
-    <Build Include="dbo\Stored Procedures\ProductDelete.sql" />
     <Build Include="dbo\Stored Procedures\CustomerGetOrders.sql" />
     <Build Include="dbo\Stored Procedures\SupplierInsert.sql" />
     <Build Include="dbo\Stored Procedures\CustomerUpdate.sql" />
     <Build Include="dbo\Stored Procedures\SupplierDelete.sql" />
-    <None Include="dbo\Triggers\TriggerUpdateName.sql" />
     <Build Include="dbo\Stored Procedures\InsertProduct.sql" />
     <Build Include="dbo\Stored Procedures\UpdateProductPrice.sql" />
+    <Build Include="dbo\Stored Procedures\ProductDelete.sql" />
+    <Build Include="dbo\Tables\ContactNameChange.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dbo\Triggers\TriggerUpdateName.sql" />
   </ItemGroup>
 </Project>
