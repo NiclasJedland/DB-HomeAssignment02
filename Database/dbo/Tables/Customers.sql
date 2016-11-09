@@ -33,3 +33,18 @@ GO
 CREATE NONCLUSTERED INDEX [Region]
     ON [dbo].[Customers]([Region] ASC);
 
+
+GO
+
+CREATE TRIGGER [dbo].[TriggerUpdateName]
+    ON [dbo].[Customers]
+    AFTER UPDATE
+    AS
+    BEGIN
+        SET NoCount ON
+
+	INSERT INTO ContactNameChange ([OldContactName],[NewContactName], [TimeOfUpdate])
+		SELECT d.ContactName, i.ContactName, GETDATE()
+			FROM inserted i
+			INNER JOIN deleted d ON i.CustomerID = d.CustomerID
+    END
