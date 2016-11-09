@@ -116,7 +116,7 @@
     <Build Include="dbo\Stored Procedures\CustomerUpdate.sql" />
     <Build Include="dbo\Stored Procedures\SupplierDelete.sql" />
     <None Include="dbo\Triggers\TriggerUpdateName.sql" />
-    <None Include="dbo\Stored Procedures\UpdateProductPrice.sql" />
     <Build Include="dbo\Stored Procedures\InsertProduct.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateProductPrice.sql" />
   </ItemGroup>
 </Project>
